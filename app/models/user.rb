@@ -6,4 +6,5 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   has_many :cats, dependent: :destroy
   has_many :bookings
+  validates :first_name, :last_name, presence: true
 end
