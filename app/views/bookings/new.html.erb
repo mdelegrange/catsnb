@@ -1,14 +1,11 @@
-<div class="container">
-  <div class="container col-xs-12 col-md-4 col-md-offset-4">
-
-    <h1>Your new booking</h1>
-    <h2><%= @cat.name %> - <%= @cat.price_per_day %>€</h2>
-    <%= simple_form_for [@cat, @booking] do |f| %>
-      <%= f.input :begin_date %>
-      <%= f.input :end_date %>
-      <%= f.input :message %>
-
-      <%= f.submit 'Book', class: 'btn btn-primary' %>
-    <% end %>
-  </div>
+<div class="container col-xs-12 col-md-4 col-md-offset-4">
+  <h1>Your new booking</h1>
+  <h2><%= @cat.name %> - <%= @cat.price_per_day %>€</h2>
+  <%= simple_form_for [@cat, @booking] do |f| %>
+    <%= f.input :begin_date %>
+    <%= f.input :end_date %>
+    <%= f.input :message %>
+    <%= f.submit 'Book', class: 'btn btn-primary' %>
+  <% end %>
 </div>
+

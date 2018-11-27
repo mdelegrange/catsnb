@@ -1,12 +1,10 @@
 class BookingsController < ApplicationController
-
+  before_action :set_cat, only: [:new, :create]
   def new
-    @cat = Cat.find(params[:cat_id])
     @booking = Booking.new
   end
 
   def create
-    @cat = Cat.find(params[:cat_id])
     @booking = Booking.new(booking_params)
     @booking.total_price = @cat.price_per_day * (@booking.end_date - @booking.begin_date)
     @booking.cat = @cat
@@ -23,5 +21,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:message, :begin_date, :end_date)
+  end
+
+  def set_cat
+    @cat = Cat.find(params[:cat_id])
   end
 end
