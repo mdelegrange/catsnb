@@ -1,9 +1,14 @@
-<div class="navbar-wagon navbar-wagon-home">
+<div class="navbar-wagon  <%= "navbar-wagon-home" if @is_home %>"">
   <!-- Logo -->
-  <a href="/" class="navbar-wagon-brand">
+
+<div class="navbar-wagon-left">
+  <%= link_to root_path do %>
     <!-- <img src="../../assets/images/kitty.png" alt="logo"> -->
-    <%= image_tag "kitty.png", alt: "alttext" %>
-  </a>
+    <%= image_tag "kitty.png", alt: "alttext", class: 'navbar-wagon-brand' %>
+
+  <% end %>
+  <h1>Cats'n'B</h1>
+</div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
