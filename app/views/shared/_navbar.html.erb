@@ -8,9 +8,13 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Sign in</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Sign up</a>
-    <a class="btn btn-primary share">Share a cat</a>
+    <% if user_signed_in? %>
+      <%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"  %>
+      <%= link_to 'Add a cat', new_owner_cat_path, class: "btn btn-primary share"  %>
+    <% else %>
+      <%= link_to 'Log in', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link"  %>
+      <%= link_to 'Create an account', new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link"  %>
+    <% end %>
 
     <!-- Profile picture with dropdown list -->
 
@@ -21,8 +25,13 @@
     <div class="dropdown">
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Sign in</a></li>
-        <li><a href="#">Sign up</a></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"  %></li>
+          <li><%= link_to 'Add a cat', new_owner_cat_path, class: "navbar-wagon-item navbar-wagon-link"  %></li>
+        <% else %>
+          <li><%= link_to 'Log in', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link"  %></li>
+          <li><%= link_to 'Create an account', new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link"  %></li>
+        <% end %>
       </ul>
     </div>
   </div>
