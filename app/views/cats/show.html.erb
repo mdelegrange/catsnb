@@ -1,16 +1,11 @@
 <div class="container">
   <h1><%= @cat.name %></h1>
+<%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill, class:"img-circle") %>
 
-  <ul>
-    <% @cat.bookings.each do |booking| %>
-      <li><%= booking.description %> - <%= booking.user.first_name %> - <%= booking.user.last_name %> </li>
-
-      <%= link_to 'New cat', new_cat_path(@cat) %>
-      <%= link_to 'Delete cat', cat_path(cat), method: :delete %>
-  <%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill) %>
-    <% end %>
-  </ul>
-
+    <p><%= @cat.breed %> </p>
+    <p><%= @cat.description %></p>
+    <p><%= @cat.birth_date %></p>
+    <p><%= @cat.price_per_day %> euros per day</p>
 <%= link_to 'Return to all cats', cats_path %>
-</div>
 
+</div>
