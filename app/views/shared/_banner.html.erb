@@ -2,13 +2,13 @@
   <div class="banner-content">
     <h2>Find and rent some lovely kitty cats</h2>
     <div class="cta"></div>
-      <%= form_tag cats_path, method: :get, class='input-form' do %>
+      <%= form_tag cats_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
           placeholder: "Find a cat"
         %>
-        <%= submit_tag "Meow !", :class => "btn btn-primary btn-lg" %> 
+        <%= submit_tag "Meow !", :class => "btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>
