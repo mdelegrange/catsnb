@@ -1,0 +1,22 @@
+
+<div class="container">
+  <h1>Bonjour <%= current_user.first_name %></h1>
+  <div class="row">
+      <% @cats.each do |cat| %>
+        <div class="col-4">
+          <div class="flex">
+            <div>
+              <div class="cat-card-image" style="background-image: url('<%= cat.photo_url %>')"></div>
+            </div>
+            <div>
+              <h4><%= cat.name %></h4>
+              <p><%= cat.breed %></p>
+              <p><%= cat.description %></p>
+              <p>Price per day: <span> <%= cat.price_per_day %> euro</span></p>
+           </div>
+          </div>
+          <%= link_to 'edit', edit_owner_cat_path(cat)  %>
+        </div>
+      <% end %>
+    </div>
+  </div>

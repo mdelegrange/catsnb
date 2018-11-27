@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+}
+.flex-align {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cat-card-image {
+  width: 200px;  
+  height: 160px;
+  background-size: cover;
+  margin: 20px 15px;
+}
+
+.cat-card-content {
+  padding: 24px;
+  background-color: #F8F9FA;
+}
+
+.container {
+  padding: 50px 0 0 0px;
+}
