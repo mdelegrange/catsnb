@@ -4,7 +4,7 @@
   <div class="row">
       <% @cats.each do |cat| %>
       <div class="message">
-        <%= cl_image_tag(cat.photo, width: 70, height: 70, crop: :fill)%>
+        <%= cl_image_tag(cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
         <div class="message-name">
           <h3><%= cat.name %></h3>
         </div>
