@@ -3,8 +3,14 @@
     <h1>CatsnB</h1>
     <p>Rent some lovely kitty</p>
     <div class="cta"></div>
-      <input type="text">
-      <%= link_to 'Find a cat', cats_path, class: "btn btn-primary find" %>
+      <%= form_tag cats_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a movie"
+        %>
+        <%= submit_tag "Find a cat", :class => "btn btn-primary" %> 
+      <% end %>
     </div>
   </div>
 </div>

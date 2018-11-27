@@ -2,7 +2,12 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show]
 
   def index
-    @cats = Cat.all
+    if params[:query].present?
+      @cats = Cat.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @cats = Cat.all
+    end
+
   end
 
   def show
