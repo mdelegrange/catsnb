@@ -1,5 +1,5 @@
 class Owner::CatsController < ApplicationController
-  
+
   def index
     @cats = current_user.cats
   end
@@ -21,6 +21,7 @@ class Owner::CatsController < ApplicationController
   end
 
   def edit
+    @cat = Cat.find(params[:id])
   end
 
   def update
@@ -29,6 +30,7 @@ class Owner::CatsController < ApplicationController
       redirect_to owner_cat_path(@cat)
     else
       render :new
+    end
   end
 
   private
