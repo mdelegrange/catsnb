@@ -6,11 +6,14 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.total_price = @cat.price_per_day * (@booking.end_date - @booking.begin_date)
     @booking.cat = @cat
-    @booking.status = "in progress"
+    @booking.status = "pending"
     @booking.user = current_user
+    if @booking.end_date.present? && @booking.begin_date.present?
+      @booking.total_price = @cat.price_per_day * (@booking.end_date - @booking.begin_date)
+    end
     if @booking.save
+
       redirect_to root_path
     else
       render :new
