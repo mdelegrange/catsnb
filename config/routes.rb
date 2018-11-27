@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'bookings/index'
-  get 'cats/index'
-  get 'cats/show'
   root to: 'pages#home'
   devise_for :users
 
