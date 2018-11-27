@@ -15,6 +15,17 @@ class Owner::CatsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @cat.update(cat_params)
+    if @cat.save
+      redirect_to owner_cat_path(@cat)
+    else
+      render :new
+  end
+
   private
 
   def cat_params
