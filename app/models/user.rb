@@ -4,7 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :photo, PhotoUploader
-  has_many :cats, dependent: :destroy
+
+  # as renter
   has_many :bookings
+
+  # as owner
+  has_many :cats, dependent: :destroy
+  has_many :received_bookings, through: :cats, source: :bookings
+
   validates :first_name, :last_name, presence: true
 end

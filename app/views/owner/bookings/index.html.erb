@@ -1,0 +1,23 @@
+
+<div class="container">
+	<h1>Bonjour <%= current_user.first_name %></h1>
+	<div class="row">
+	    <% @bookings.each do |booking| %>
+	      <div class="col-4">
+	      	<div class="flex">
+	      		<div>
+	          	<div class="booking-card-image" style="background-image: url('<%= booking.cat.photo_url %>')"></div>
+	          </div>
+	          <div>
+	            <h4><%= booking.cat.name %></h4>
+	            <p><%= booking.begin_date %></p>
+	            <p><%= booking.end_date %></p>
+	            <p><%= booking.message %></p>
+	            <p>status: <span> <%= booking.status %></span></p>
+	            <p>Price: <span> <%= booking.total_price %> euro</span></p>
+	         </div>
+	        </div>
+	      </div>
+	    <% end %>
+	  </div>
+  </div>
