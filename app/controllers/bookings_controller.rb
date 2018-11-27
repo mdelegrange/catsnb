@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_cat, only: [:new, :create]
+  before_action :set_booking, only: [:new, :create]
   def new
     @booking = Booking.new
   end
@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:message, :begin_date, :end_date)
   end
 
-  def set_cat
-    @cat = Cat.find(params[:cat_id])
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
   end
 end
