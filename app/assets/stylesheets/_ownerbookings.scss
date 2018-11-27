@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+}
+.flex-align {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booking-card-image {
+  width: 200px;  
+  height: 160px;
+  background-size: cover;
+  margin: 20px 15px;
+}
+
+.booking-card-content {
+  padding: 24px;
+  background-color: #F8F9FA;
+}
+
+
