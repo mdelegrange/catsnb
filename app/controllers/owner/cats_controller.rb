@@ -1,6 +1,10 @@
 class Owner::CatsController < ApplicationController
   before_action :set_cat, only: [:edit, :update]
 
+  def index
+    @cats = current_user.cats
+  end
+
   def new
     @cat = Cat.new
   end

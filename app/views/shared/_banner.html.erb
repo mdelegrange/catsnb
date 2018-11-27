@@ -1,10 +1,15 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.pexels.com/photos/794083/pexels-photo-794083.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');">
   <div class="banner-content">
-    <h1>CatsnB</h1>
-    <p>Rent some lovely kitty</p>
+    <h2>Find and rent some lovely kitty cats</h2>
     <div class="cta"></div>
-      <input type="text">
-      <%= link_to 'Find a cat', cats_path, class: "btn btn-primary find" %>
+      <%= form_tag cats_path, method: :get, class='input-form' do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a cat"
+        %>
+        <%= submit_tag "Meow !", :class => "btn btn-primary btn-lg" %> 
+      <% end %>
     </div>
   </div>
 </div>
