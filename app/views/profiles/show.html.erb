@@ -1,0 +1,17 @@
+<div class="container">
+  <% if current_user.photo.present? %>
+    <%= cl_image_tag(current_user.photo, height: 300, width: 300, crop: :fill, alt: "user avatar",  class: "img-circle")%>
+  <% else %>
+    <%= image_tag "user.png", alt: "user avatar", height: 300, class: "img-circle"%>
+  <% end %>
+
+  <h1><%= @user.first_name %><%= @user.last_name %></h1>
+  <p>Address: <%= @user.address %></p>
+  <p>Email: <%= @user.email %></p>
+  <p>Phone: <%= @user.phone %></p>
+  <p>Gender: <%= @user.sex %></p>
+  <p>Birth Date: <%= @user.birth_date %></p>
+
+  <%= link_to 'Edit', edit_profile_path %>
+
+</div>
