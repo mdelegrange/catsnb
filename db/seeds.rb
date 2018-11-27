@@ -33,9 +33,9 @@ cat10 = Cat.create!(user: valentin, name: Faker::Cat.name, description: Faker::C
 
 puts "Cats Created"
 
-booking_validate = Booking.create!(user: valentin  , cat: cat1 ,begin_date: '2018-11-20' , end_date: '2018-11-26', status: 'valid')
-booking_validate = Booking.create!(user: matthieu , cat: cat2 ,begin_date: '2018-12-02' , end_date: '2018-11-16', status: 'in progress')
-booking_validate = Booking.create!(user: pierre , cat: cat5 ,begin_date: '2018-12-20' , end_date: '2018-12-29', status: 'deny')
+booking_validate = Booking.create!(user: valentin  , cat: cat1 ,begin_date: '2018-11-20' , end_date: '2018-11-26', total_price: 90,  status: 'accepted')
+booking_validate = Booking.create!(user: matthieu , cat: cat2 ,begin_date: '2018-11-16' , end_date: '2018-12-02', total_price: 160,  status: 'pending')
+booking_validate = Booking.create!(user: pierre , cat: cat5 ,begin_date: '2018-12-20' , end_date: '2018-12-29', total_price: 153, status: 'denied')
 
 puts "Bookings Created"
 

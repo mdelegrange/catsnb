@@ -1,5 +1,5 @@
 <div class="container col-xs-12 col-md-4 col-md-offset-4">
-  <h2>Edit @cat.name</h2>
+  <h2>Edit <%= @cat.name %></h2>
   <%= simple_form_for([:owner, @cat]) do |f| %>
   <%= f.input :name %>
   <%= f.input :breed %>
