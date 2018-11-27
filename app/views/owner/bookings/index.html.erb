@@ -12,7 +12,7 @@
 	            <h4><%= booking.cat.name %></h4>
 	            <p>From: <%= booking.begin_date %></p>
 	            <p>To: <%= booking.end_date %></p>
-	            <p>Renter: <%= booking.user.last_name %> <%= booking.user.first_name %> </p>
+	            <p>Renter: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
 	            <p>Message: <%= booking.message.nil? ? "No message" : booking.message %></p>
 	            <div class="<%= booking.status %>">
 	            <p>status: <span> <%= booking.status %></span></p>
