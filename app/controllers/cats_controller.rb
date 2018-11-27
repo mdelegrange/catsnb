@@ -1,8 +1,14 @@
 class CatsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
   before_action :set_cat, only: [:show]
 
   def index
-    @cats = Cat.all
+    if params[:query].present?
+      @cats = Cat.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @cats = Cat.all
+    end
+
   end
 
   def show

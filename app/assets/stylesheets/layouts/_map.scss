@@ -1,0 +1,15 @@
+.main-container {
+  display: flex;
+}
+
+.card-container {
+  flex: 0 0 60%;
+}
+
+#map {
+  width: 100%;
+  height: calc(100vh - 70px);
+  flex: 1 1 40%;
+  position: sticky !important;
+  top: 0 !important;
+}

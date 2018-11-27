@@ -3,20 +3,32 @@
   <h1>Bonjour <%= current_user.first_name %></h1>
   <div class="row">
       <% @cats.each do |cat| %>
-        <div class="col-4">
-          <div class="flex">
-            <div>
-              <div class="cat-card-image" style="background-image: url('<%= cat.photo_url %>')"></div>
-            </div>
-            <div>
-              <h4><%= cat.name %></h4>
-              <p><%= cat.breed %></p>
-              <p><%= cat.description %></p>
-              <p>Price per day: <span> <%= cat.price_per_day %> euro</span></p>
-           </div>
-          </div>
-          <%= link_to 'edit', edit_owner_cat_path(cat)  %>
+      <div class="message">
+        <%= cl_image_tag(cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
+        <div class="message-name">
+          <h3><%= cat.name %></h3>
         </div>
+        <div class="message-body">
+          <p>Breed: <%= cat.breed %></p>
+          <p>Description: <%= cat.description %></p>
+          <p>Price per day: <%= cat.price_per_day %> €</p>
+        </div>
+        <div class="message-status">
+          <ul style="list-style-type: none;" class="text-center">
+            <li>
+          <%= link_to 'edit', edit_owner_cat_path(cat)  %>
+
+            </li>
+            <li>
+
+          <%= link_to 'delete', owner_cat_path(cat), method: :delete, data: { confirm: "Are you sure?" } %>
+            </li>
+          </ul>
+        </div>
+      </div>
       <% end %>
     </div>
   </div>
+
+
+

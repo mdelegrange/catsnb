@@ -1,5 +1,5 @@
 class Owner::CatsController < ApplicationController
-  before_action :set_cat, only: [ :edit, :update ]
+  before_action :set_cat, only: [ :edit, :update, :destroy ]
 
   def index
     @cats = current_user.cats
@@ -25,12 +25,16 @@ class Owner::CatsController < ApplicationController
   end
 
   def update
-    @cat.update(cat_params)
-    if @cat.save
+    if @cat.update(cat_params)
       redirect_to owner_cats_path
     else
-      render :new
+      render :edit
     end
+  end
+
+  def destroy
+    @cat.destroy
+    redirect_to owner_cats_path
   end
 
   private
@@ -41,6 +45,10 @@ class Owner::CatsController < ApplicationController
 
   def cat_params
     params.require(:cat).permit(:name, :breed, :description, :birth_date, :photo, :price_per_day)
+  end
+
+  def set_cat
+    @cat = Cat.find(params[:id])
   end
 
 end

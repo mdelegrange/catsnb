@@ -1,22 +1,43 @@
-<div class="navbar-wagon navbar-wagon-home">
+<div class="navbar-wagon  <%= "navbar-wagon-home" if @is_home %>"">
   <!-- Logo -->
-  <a href="/" class="navbar-wagon-brand">
+
+<div class="navbar-wagon-left">
+  <%= link_to root_path do %>
     <!-- <img src="../../assets/images/kitty.png" alt="logo"> -->
-    <%= image_tag "kitty.png", alt: "alttext" %>
-  </a>
+    <%= image_tag "kitty.png", alt: "alttext", class: 'navbar-wagon-brand' %>
+
+  <% end %>
+  <h1>Cats'n'B</h1>
+</div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
     <% if user_signed_in? %>
-      <%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"  %>
       <%= link_to 'Add a cat', new_owner_cat_path, class: "btn btn-primary share"  %>
+      <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <% if current_user.photo.present? %>
+          <%= cl_image_tag(current_user.photo, height: 35, width: 35, crop: :fill, alt: "user avatar",  class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle' => "dropdown" )%>
+        <% else %>
+          <%= image_tag "user.png", alt: "user avatar", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle' => "dropdown" %>
+          <!-- <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
+        <% end %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><%= link_to 'My cats', owner_cats_path %></li>
+          <li><%= link_to 'My bookings', owner_bookings_path %></li>
+          <li><%= link_to 'My profile', profile_path %></li>
+          <li><%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"  %></li>
+        </ul>
+      </div>
+    </div>
     <% else %>
       <%= link_to 'Log in', new_user_session_path, class: "navbar-wagon-item navbar-wagon-link"  %>
       <%= link_to 'Create an account', new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link"  %>
     <% end %>
+  </div>
 
     <!-- Profile picture with dropdown list -->
+
 
   </div>
 
