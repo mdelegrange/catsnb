@@ -1,0 +1,26 @@
+
+<div class="container">
+  <h1>Bonjour <%= current_user.first_name %></h1>
+  <div class="row">
+      <% @cats.each do |cat| %>
+      <div class="message">
+        <%= cl_image_tag(cat.photo, width: 70, height: 70, crop: :fill)%>
+        <div class="message-name">
+          <h3><%= cat.name %></h3>
+        </div>
+        <div class="message-body">
+          <p><%= cat.description %></p>
+          <p><%= cat.breed %></p>
+          <p>Price per day: <%= cat.price_per_day %> €</p>
+        </div>
+        <div class="message-status">
+          <%= link_to 'edit', edit_owner_cat_path(cat)  %>
+          <%= link_to 'delete', edit_owner_cat_path(cat)  %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
+<
