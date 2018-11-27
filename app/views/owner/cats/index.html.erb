@@ -21,7 +21,7 @@
             </li>
             <li>
 
-          <%= link_to 'delete', edit_owner_cat_path(cat)  %>
+          <%= link_to 'delete', owner_cat_path(cat), method: :delete, data: { confirm: "Are you sure?" } %>
             </li>
           </ul>
         </div>

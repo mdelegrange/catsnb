@@ -1,5 +1,5 @@
 class Owner::CatsController < ApplicationController
-  before_action :set_cat, only: [:edit, :update]
+  before_action :set_cat, only: [ :edit, :update, :destroy ]
 
   def index
     @cats = current_user.cats
@@ -30,6 +30,11 @@ class Owner::CatsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @cat.destroy
+    redirect_to owner_cats_path
   end
 
   private
