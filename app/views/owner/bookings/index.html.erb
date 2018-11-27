@@ -10,10 +10,13 @@
 	          </div>
 	          <div>
 	            <h4><%= booking.cat.name %></h4>
-	            <p><%= booking.begin_date %></p>
-	            <p><%= booking.end_date %></p>
-	            <p><%= booking.message %></p>
+	            <p>From: <%= booking.begin_date %></p>
+	            <p>To: <%= booking.end_date %></p>
+	            <p>Renter: <%= booking.user.last_name %></p>
+	            <p>Message: <%= booking.message.nil? ? "No message" : booking.message %></p>
+	            <div class="<%= booking.status %>">
 	            <p>status: <span> <%= booking.status %></span></p>
+	            </div>
 	            <p>Price: <span> <%= booking.total_price %> euro</span></p>
 	         </div>
 	        </div>
