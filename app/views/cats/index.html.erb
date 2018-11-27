@@ -1,25 +1,23 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://kitt.lewagon.com/placeholder/cities/berlin');">
+<div class="container">
   <h1>All Cats</h1>
-
+  <div class="row">
+      <% @cats.each do |cat| %>
+    <div class="col-xs-12 col-sm-4">
  <!--  <%= link_to 'Add a cat', new_owner_cat_path %> -->
-
-  <% @cats.each do |cat| %>
-    <h2>
-      <%= link_to cat.name, cat_path(cat) %>
-    </h2>
-
-    <ul>
-      <li><%= cat.name %> - <%= cat.breed %> - <%= cat.photo %> - <%= cat.description %> -<%=  %>
-    t.string "photo"
-    t.text "description"
-    t.date "birth_date" %> - <%= booking.user.last_name %> </li>
-
-      <%= link_to 'New cat', new_cat_path(@cat) %>
-      <%= link_to 'Delete cat', cat_path(cat), method: :delete %>
-  <%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill) %>
-    <% end %>
-  </ul>
-
-  <%= link_to "See details", cat_path(cat), class: "btn btn-primary"%>
+        <div class="card">
+          <div class="card-category">Cats</div>
+            <div class="card-description">
+                  <h2><%= cat.name %> - <%= cat.breed %> - <%= cat.description %> - <%= cat.birth_date %> - <%= cat.price_per_day %> </h2>
+                  <%= cl_image_tag(cat.photo, height: 300, width: 400, crop: :fill) %>
+                  <h2>
+                    <%= link_to cat.name, cat_path(cat) %>
+                  </h2>
+                    <%= link_to "See details", cat_path(cat), class: "cats_details btn btn-primary"%>
+              <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+              <a class="card-link" href="#" ></a>
+              </div>
+        </div>
+    </div>
   <% end %>
+  </div>
 </div>
