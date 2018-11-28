@@ -13,4 +13,5 @@ class User < ApplicationRecord
   has_many :received_bookings, through: :cats, source: :bookings
 
   validates :first_name, :last_name, presence: true
+  validates :sex, inclusion: { in: ['M', 'F'] }
 end

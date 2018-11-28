@@ -6,7 +6,7 @@
     <%= f.input :address %>
     <%= f.input :phone %>
     <%= f.input :email %>
-    <%= f.input :sex %>
+    <%= f.input :sex, collection: [ "M", "F"] %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.button :submit, class: 'btn btn-primary' %>
