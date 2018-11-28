@@ -30,3 +30,29 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
+
+.show-cat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // padding: 30px;
+}
+
+.booking-new {
+  // width: 40%;
+  flex: 0 0 35%;
+  background-color: white;
+  padding: 30px;
+  border-style: solid;
+  border-color: lightgrey;
+}
+
+
+.book-btn {
+  width: 100%;
+}
+
+.cat-card-show {
+  border-radius: 3px;
+  margin-bottom: 50px;
+}
