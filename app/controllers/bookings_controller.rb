@@ -20,9 +20,9 @@ class BookingsController < ApplicationController
     end
     if @booking.save
 
-      redirect_to root_path
+      redirect_to bookings_path
     else
-      render :new
+      render 'cats/show'
     end
   end
 
