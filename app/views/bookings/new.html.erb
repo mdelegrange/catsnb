@@ -1,5 +1,5 @@
 <div class="container col-xs-12 col-md-4 col-md-offset-4">
-  <h1 class="new-booking-title">Your new booking</h1>
+  <h1>Your new booking</h1>
   <h2><%= @cat.name %> - <%= @cat.price_per_day %>€</h2>
   <%= simple_form_for [@cat, @booking] do |f| %>
     <%= f.input :begin_date, as: :string, required: false, input_html: {class: "datepicker"} %>
