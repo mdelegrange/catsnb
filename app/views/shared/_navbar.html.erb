@@ -24,7 +24,8 @@
         <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><%= link_to 'My cats', owner_cats_path %></li>
-          <li><%= link_to 'My bookings', owner_bookings_path %></li>
+          <li><%= link_to 'owner/bookings', owner_bookings_path %></li>
+          <li><%= link_to 'renter/bookings', bookings_path %></li>
           <li><%= link_to 'My profile', profile_path %></li>
           <li><%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"  %></li>
         </ul>
