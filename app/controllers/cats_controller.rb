@@ -13,11 +13,12 @@ class CatsController < ApplicationController
       }
     end
 
-    # if params[:query].present?
-    #   @cats = Cat.where("name ILIKE ?", "%#{params[:query]}%")
-    # else
-    #   @cats = Cat.all
-    # end
+    if params[:query].present?
+      @cats = Cat.near(params[:query], 10)
+      
+    else
+      @cats = Cat.all
+    end
   end
 
   def show
