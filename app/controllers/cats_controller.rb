@@ -3,9 +3,10 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show]
 
   def index
-    @cats = Cat.where.not(latitude: nil, longitude: nil)
-
-    @markers = @cats.map do |cat|
+    if params[:query].present?
+      @cats_loc = Cat.where.not(latitude: nil, longitude: nil)
+      @cats = @cats_loc.near(params[:query], 10)
+      @markers = @cats.map do |cat|
       {
         lat: cat.latitude,
         lng: cat.longitude,
@@ -13,11 +14,15 @@ class CatsController < ApplicationController
       }
     end
 
-    if params[:query].present?
-      @cats = Cat.near(params[:query], 10)
-      
     else
-      @cats = Cat.all
+      @cats = Cat.where.not(latitude: nil, longitude: nil)
+      @markers = @cats.map do |cat|
+      {
+        lat: cat.latitude,
+        lng: cat.longitude,
+        infoWindow: { content: render_to_string(partial: "/cats/map_window", locals: { cat: cat }) }
+      }
+    end
     end
   end
 
