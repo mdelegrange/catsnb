@@ -23,7 +23,6 @@ class CatsController < ApplicationController
   def show
     @owner_avatar = User.find_by_id(@cat.user_id).photo
     @owner_name = User.find_by_id(@cat.user_id).first_name + " " + User.find_by_id(@cat.user_id).last_name
-
   end
 
   private
