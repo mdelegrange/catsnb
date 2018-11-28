@@ -37,13 +37,13 @@ cat10 = Cat.create!(user: matthieu, name: Faker::Cat.name, description: Faker::C
 
 puts "Cats Created"
 
-booking1 = Booking.create!(user: user_renter1, cat: cat1, begin_date: '2018-11-20', end_date: '2018-11-26', status: 'accepted')
-booking2 = Booking.create!(user: user_renter1, cat: cat3, begin_date: '2018-11-16', end_date: '2018-12-02', status: 'pending')
-booking3 = Booking.create!(user: user_renter2, cat: cat2, begin_date: '2018-12-20', end_date: '2018-12-29', status: 'denied')
-booking4 = Booking.create!(user: user_renter2, cat: cat6, begin_date: '2018-12-28', end_date: '2018-12-29', status: 'pending')
-booking5 = Booking.create!(user: user_renter3, cat: cat10, begin_date: '2019-01-15', end_date: '2019-02-15', status: 'pending')
-booking6 = Booking.create!(user: user_renter3, cat: cat9, begin_date: '2019-03-20', end_date: '2019-05-20', status: 'pending')
-booking7 = Booking.create!(user: matthieu,     cat: cat8, begin_date: '2019-03-20', end_date: '2019-05-20', status: 'pending')
+booking1 = Booking.create!(user: user_renter1, cat: cat1, begin_date: '2018-11-20', end_date: '2018-11-26', total_price: 90, status: 'accepted')
+booking2 = Booking.create!(user: user_renter1, cat: cat3, begin_date: '2018-11-16', end_date: '2018-12-02', total_price: 320, status: 'pending')
+booking3 = Booking.create!(user: user_renter2, cat: cat2, begin_date: '2018-12-20', end_date: '2018-12-29', total_price: 90, status: 'denied')
+booking4 = Booking.create!(user: user_renter2, cat: cat6, begin_date: '2018-12-28', end_date: '2018-12-29', total_price: 16, status: 'pending')
+booking5 = Booking.create!(user: user_renter3, cat: cat10, begin_date: '2019-01-15', end_date: '2019-02-15', total_price: 620, status: 'pending')
+booking6 = Booking.create!(user: user_renter3, cat: cat9, begin_date: '2019-03-20', end_date: '2019-05-20', total_price: 1159, status: 'pending')
+booking7 = Booking.create!(user: matthieu,     cat: cat8, begin_date: '2019-03-20', end_date: '2019-05-20', total_price: 1220, status: 'pending')
 
 puts "Bookings Created"
 
