@@ -1,0 +1,32 @@
+.cat-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f6c7c7;
+  width: 400px;
+  margin-top: 0px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.cat-infos {
+  width: 400px;
+
+}
+
+.owner-infos {
+  width: 400px;
+  display: flex;
+  align-items: center;
+
+}
+
+.owner-infos p {
+  padding-top: 15px;
+  padding-left: 30px;
+}
+
+.cat-image {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}

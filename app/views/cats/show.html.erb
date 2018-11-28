@@ -1,23 +1,25 @@
 <div class="container">
-  <%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill) %>
+  <div class="cats-infos">
+    <div class="owner-infos">
+      <% if @owner_avatar.present? %>
+        <%= cl_image_tag(current_user.photo, height: 40, width: 40, crop: :fill, alt: "user avatar",  class: "img-circle")%>
+      <% else %>
+        <%= image_tag "user.png", alt: "user avatar", height: 40, class: "img-circle"%>
+      <% end %>
+      <p><%= @owner_name %></p>
+    </div>
+    <div class="cat-image"><%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill) %></div>
 
-  <% if @owner_avatar.present? %>
-    <%= cl_image_tag(current_user.photo, height: 75, width: 75, crop: :fill, alt: "user avatar",  class: "img-circle")%>
-  <% else %>
-    <%= image_tag "user.png", alt: "user avatar", height: 75, class: "img-circle"%>
-  <% end %>
-
-  <p><%= @owner_name %></p>
+    <h1 class="cat-name"><%= @cat.name %></h1>
+  </div>
 
 
-  <h1><%= @cat.name %></h1>
-  <p>Breed: <%= @cat.breed %></p>
-  <p>Description: <%= @cat.description %></p>
-  <p>Price per day: <%= @cat.price_per_day %></p>
+  <p> 🐈  <strong><%= @cat.breed %></strong>  </p>
+  <p>About - <%= @cat.description %></p>
+  <p><strong><%= @cat.price_per_day %>€</strong>/day  </p>
 
 
   <%= link_to 'Book',  new_cat_booking_path(@cat), class: 'btn btn-primary'  %>
   <hr>
   <%= link_to 'Return to all cats', cats_path %>
 </div>
-
