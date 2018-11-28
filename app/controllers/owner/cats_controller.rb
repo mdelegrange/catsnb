@@ -44,7 +44,7 @@ class Owner::CatsController < ApplicationController
   end
 
   def cat_params
-    params.require(:cat).permit(:name, :breed, :description, :birth_date, :photo, :price_per_day)
+    params.require(:cat).permit(:name, :breed, :description, :birth_date, :photo, :price_per_day, :address)
   end
 
 end
