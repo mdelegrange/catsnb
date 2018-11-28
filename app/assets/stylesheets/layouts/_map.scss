@@ -13,3 +13,24 @@
   position: sticky !important;
   top: 0 !important;
 }
+
+.mapboxgl-popup {
+  min-width: 400px;
+}
+
+.mapboxgl-popup-content {
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  h1 {
+    font-size: 20px;
+  }
+}
+
+.marker {
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+}

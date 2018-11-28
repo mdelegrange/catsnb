@@ -8,7 +8,8 @@ class CatsController < ApplicationController
     @markers = @cats.map do |cat|
       {
         lat: cat.latitude,
-        lng: cat.longitude
+        lng: cat.longitude,
+        infoWindow: { content: render_to_string(partial: "/cats/map_window", locals: { cat: cat }) }
       }
     end
 
