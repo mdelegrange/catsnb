@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:new, :create]
-  
+  before_action :set_cat, only: [ :new, :create ]
+
   def index
     @bookings = Booking.where(user_id: current_user.id)
   end
@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+
     @booking.cat = @cat
     @booking.status = "pending"
     @booking.user = current_user
@@ -31,7 +32,7 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:message, :begin_date, :end_date)
   end
 
-  def set_booking
-    @booking = Booking.find(params[:booking_id])
+  def set_cat
+    @cat = Cat.find(params[:cat_id])
   end
 end
