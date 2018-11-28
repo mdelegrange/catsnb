@@ -1,7 +1,20 @@
-
 <div class="container">
-  <h1>Bonjour <%= current_user.first_name %></h1>
   <div class="row">
+    <h1>Bonjour <%= current_user.first_name %></h1>
+    <div class="tabs">
+      <%= link_to owner_cats_path, class: "tab active" do  %>
+        <h2>My cats</h2>
+      <% end %>
+      <%= link_to owner_bookings_path, class: "tab" do  %>
+        <h2>My bookings</h2>
+      <% end %>
+      <%= link_to bookings_path, class: "tab" do  %>
+        <h2>My rented cats</h2>
+      <% end %>
+      <%= link_to profile_path, class: "tab" do  %>
+        <h2>My profile</h2>
+      <% end %>
+    </div>
       <% @cats.each do |cat| %>
       <div class="message">
         <%= cl_image_tag(cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
