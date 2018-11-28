@@ -1,30 +1,42 @@
-
-<div class="container">
-	<h1>Bonjour <%= current_user.first_name %></h1>
-	<div class="row">
-	    <% @bookings.each do |booking| %>
-	      <div class="col-4">
-	      	<div class="flex">
-	      		<div>
-	          	<div class="booking-card-image" style="background-image: url('<%= booking.cat.photo_url %>')"></div>
-	          </div>
-	          <div>
-	            <h4><%= booking.cat.name %></h4>
-	            <p>From: <%= booking.begin_date %></p>
-	            <p>To: <%= booking.end_date %></p>
-	            <p>Renter: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
-	            <p>Message: <%= booking.message.nil? ? "No message" : booking.message %></p>
-	            <div class="<%= booking.status %>">
-	            <p>status: <span> <%= booking.status %></span></p>
-	            </div>
-	            <p>Price: <span> <%= booking.total_price %> euro</span></p>
-	            <% if booking.status == 'pending' %>
-	            <%= link_to 'Accept', accept_owner_booking_path(booking), method: :patch %>
-				<%= link_to 'Deny', deny_owner_booking_path(booking), method: :patch %>
-				<% end %>
-	         </div>
-	        </div>
-	      </div>
-	    <% end %>
-	  </div>
+<div class="row">
+  <div class="container">
+    <h1>Bonjour <%= current_user.first_name %></h1>
+    <div class="tabs">
+      <%= link_to owner_cats_path, class: "tab" do  %>
+        <h2>My cats</h2>
+      <% end %>
+      <%= link_to owner_bookings_path, class: "tab active" do  %>
+        <h2>My bookings</h2>
+      <% end %>
+      <%= link_to bookings_path, class: "tab" do  %>
+        <h2>My rented cats</h2>
+      <% end %>
+      <%= link_to profile_path, class: "tab" do  %>
+        <h2>My profile</h2>
+      <% end %>
+    </div>
+  	<% @bookings.each do |booking| %>
+      <div class="message">
+        <%= cl_image_tag(booking.cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
+        <div class="message-name">
+          <h3><%= booking.cat.name %></h3>
+        </div>
+        <div class="message-body">
+          <p>From: <%= booking.begin_date %> to: <%= booking.end_date %></p>
+          <p>Renter: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+          <p>Message: <%= booking.message.nil? ? "No message" : booking.message %></p>
+        </div>
+        <div class="message-status text-center">
+          <div class="<%= booking.status %>">
+            <p>status: <span> <%= booking.status %></span></p>
+          </div>
+          <p>Price: <span> <%= booking.total_price %> euro</span></p>
+          <% if booking.status == 'pending' %>
+            <%= link_to 'Accept', accept_owner_booking_path(booking), method: :patch, class: 'btn btn-success' %>
+  	        <%= link_to 'Deny', deny_owner_booking_path(booking), method: :patch, class: 'btn btn-danger' %>
+         <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
