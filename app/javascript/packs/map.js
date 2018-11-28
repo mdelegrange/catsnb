@@ -7,14 +7,22 @@ if (mapElement) { // only build a map if there's a div#map to inject into
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
+    style: 'mapbox://styles/mdelegrange/cjp14c8rx0r042slipw36pojx'
   });
 
   const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
+    const el = document.createElement('div');
+    el.className = 'marker';
+    el.style.backgroundImage = 'url(https://image.flaticon.com/icons/svg/763/763699.svg)';
+    el.style.width = '40px';
+    el.style.height = '40px';
+
+    new mapboxgl.Marker(el)
       .setLngLat([marker.lng, marker.lat])
+      .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML(marker.infoWindow.content))
       .addTo(map);
   });
 
@@ -30,5 +38,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     });
     map.fitBounds(bounds, { duration: 0, padding: 75 })
   }
+
+
 
 }
