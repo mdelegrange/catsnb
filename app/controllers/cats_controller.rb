@@ -3,12 +3,20 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show]
 
   def index
-    if params[:query].present?
-      @cats = Cat.where("name ILIKE ?", "%#{params[:query]}%")
-    else
-      @cats = Cat.all
+    @cats = Cat.where.not(latitude: nil, longitude: nil)
+
+    @markers = @cats.map do |cat|
+      {
+        lat: cat.latitude,
+        lng: cat.longitude
+      }
     end
 
+    # if params[:query].present?
+    #   @cats = Cat.where("name ILIKE ?", "%#{params[:query]}%")
+    # else
+    #   @cats = Cat.all
+    # end
   end
 
   def show
