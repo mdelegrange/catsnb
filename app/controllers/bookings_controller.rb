@@ -5,6 +5,11 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    @cat = @booking.cat
+  end
+
   def new
     @booking = Booking.new
   end

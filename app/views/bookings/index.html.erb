@@ -8,7 +8,7 @@
               <div class="booking-card-image" style="background-image: url('<%= booking.cat.photo_url %>')"></div>
             </div>
             <div>
-              <h4><%= booking.cat.name %></h4>
+              <h4><%= link_to booking.cat.name, booking_path(booking) %></h4>
               <p>Your reserverd a cat from <%= booking.begin_date %> to <%= booking.end_date %></p>
               <p><%= booking.message %></p>
               <p> Your status is <span> <%= booking.status %></span></p>

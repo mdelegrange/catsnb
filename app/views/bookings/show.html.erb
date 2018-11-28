@@ -1,0 +1,11 @@
+<div class="container">
+  <%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill) %>
+  <h1><%= @cat.name %></h1>
+  <p>Breed: <%= @cat.breed %></p>
+  <p>Description: <%= @cat.description %></p>
+  <p>Price per day: <%= @cat.price_per_day %> euros </p>
+
+  <hr>
+  <%= link_to 'Return to your cats', bookings_path %>
+</div>
+
