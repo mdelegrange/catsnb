@@ -1,10 +1,10 @@
 <div class="container show-cat">
   <div class="cats-infos">
     <div class="owner-infos">
-      <% if @owner_avatar.present? %>
-        <%= cl_image_tag(current_user.photo, height: 40, width: 40, crop: :fill, alt: "user avatar",  class: "img-circle")%>
-      <% else %>
+      <% if !@owner_avatar.nil? %>
         <%= image_tag "user.png", alt: "user avatar", height: 40, class: "img-circle"%>
+      <% else %>
+        <%= cl_image_tag(current_user.photo, height: 40, width: 40, crop: :fill, alt: "user avatar",  class: "img-circle")%>
       <% end %>
       <p><%= @owner_name %></p>
     </div>
