@@ -3,5 +3,13 @@ import "flatpickr/dist/flatpickr.min.css"; // Note this is important!
 
 flatpickr(".datepicker", {
   altInput: true,
-  allowInput: true,
-});
+  altFormat: "F j, Y",
+  dateFormat: "Y-m-d",
+})
+
+flatpickr(".datepicker-birth", {
+  maxDate: "today",
+  altInput: true,
+  altFormat: "F j, Y",
+  dateFormat: "Y-m-d",
+})

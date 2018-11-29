@@ -1,0 +1,47 @@
+<div class="container">
+	<h1>Bonjour <%= current_user.first_name %></h1>
+	<div class="row">
+    <div class="tabs">
+      <%= link_to owner_cats_path, class: "tab" do  %>
+        <h2>My cats</h2>
+      <% end %>
+      <%= link_to owner_bookings_path, class: "tab" do  %>
+        <h2>My bookings</h2>
+      <% end %>
+      <%= link_to bookings_path, class: "tab active" do  %>
+        <h2>My rented cats</h2>
+      <% end %>
+      <%= link_to profile_path, class: "tab" do  %>
+        <h2>My profile</h2>
+      <% end %>
+    </div>
+    <% @bookings.each do |booking| %>
+      <div class="message">
+          <%= cl_image_tag(booking.cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
+        <div class="message-name">
+          <%= link_to cat_path(booking.cat) do  %>
+            <h3><%= booking.cat.name %></h3>
+          <% end %>
+        </div>
+        <div class="message-body">
+          <p>From: <%= booking.begin_date %> to: <%= booking.end_date %></p>
+          <p>Owner: <%= booking.cat.user.first_name %> <%= booking.cat.user.last_name %></p>
+        </div>
+        <div class="message-status text-center">
+          <div class="<%= booking.status %>">
+            <p>status: <span> <%= booking.status %></span></p>
+          </div>
+          <p>Total paid: <span> <%= booking.total_price %> €</span></p>
+          <% if booking.end_date.past? %>
+            <% if booking.review %>
+              <%= link_to '✏️Edit review', edit_booking_review_path(booking, booking.review), class: 'btn btn-navbar btn-mini'  %>
+              <%= link_to '❌Delete review', booking_review_path(booking, booking.review), method: :delete, class: 'btn btn-navbar btn-mini'  %>
+            <% else %>
+              <%= link_to '✚ Add a review', new_booking_review_path(booking), class: 'btn btn-navbar btn-mini' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+	  </div>
+  </div>

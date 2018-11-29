@@ -1,12 +1,27 @@
-
 <div class="container">
-  <h1>Bonjour <%= current_user.first_name %></h1>
   <div class="row">
+    <h1>Bonjour <%= current_user.first_name %></h1>
+    <div class="tabs">
+      <%= link_to owner_cats_path, class: "tab active" do  %>
+        <h2>My cats</h2>
+      <% end %>
+      <%= link_to owner_bookings_path, class: "tab" do  %>
+        <h2>My bookings</h2>
+      <% end %>
+      <%= link_to bookings_path, class: "tab" do  %>
+        <h2>My rented cats</h2>
+      <% end %>
+      <%= link_to profile_path, class: "tab" do  %>
+        <h2>My profile</h2>
+      <% end %>
+    </div>
       <% @cats.each do |cat| %>
       <div class="message">
         <%= cl_image_tag(cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
         <div class="message-name">
+          <%= link_to cat_path(cat) do  %>
           <h3><%= cat.name %></h3>
+          <% end %>
         </div>
         <div class="message-body">
           <p>Breed: <%= cat.breed %></p>
@@ -14,16 +29,8 @@
           <p>Price per day: <%= cat.price_per_day %> €</p>
         </div>
         <div class="message-status">
-          <ul style="list-style-type: none;" class="text-center">
-            <li>
-          <%= link_to 'edit', edit_owner_cat_path(cat)  %>
-
-            </li>
-            <li>
-
-          <%= link_to 'delete', owner_cat_path(cat), method: :delete, data: { confirm: "Are you sure?" } %>
-            </li>
-          </ul>
+            <%= link_to '✏️Edit cat info', edit_owner_cat_path(cat), class: 'btn btn-navbar btn-mini'  %>
+            <%= link_to '❌Delete cat', owner_cat_path(cat), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-navbar btn-mini'%>
         </div>
       </div>
       <% end %>

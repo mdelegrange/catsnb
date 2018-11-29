@@ -4,10 +4,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :cats, only: [:index, :show] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:create]
   end
 
-  resources :bookings, only: [:index, :show]
+  resources :bookings, only: [:index, :show] do
+    resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   namespace :owner do
     resources :cats, only: [:index, :new, :create, :edit, :update, :destroy]

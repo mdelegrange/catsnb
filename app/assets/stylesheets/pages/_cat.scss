@@ -1,0 +1,59 @@
+.cat-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f6c7c7;
+  width: 400px;
+  margin-top: 0px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.cat-infos {
+  width: 400px;
+
+}
+
+.owner-infos {
+  width: 400px;
+  display: flex;
+  align-items: center;
+
+}
+
+.owner-infos p {
+  padding-top: 15px;
+  padding-left: 30px;
+}
+
+.cat-image {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.show-cat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // padding: 30px;
+}
+
+.booking-new {
+  // width: 40%;
+  flex: 0 0 35%;
+  background-color: white;
+  padding: 30px;
+  border-style: solid;
+  border-color: lightgrey;
+  border-radius: 4px;
+}
+
+
+.book-btn {
+  width: 100%;
+}
+
+.cat-card-show {
+  border-radius: 3px;
+  margin-bottom: 50px;
+}
