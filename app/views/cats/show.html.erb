@@ -1,36 +1,43 @@
-<div class="container show-cat">
-  <div class="cats-infos">
-    <div class="owner-infos">
-      <% if @owner_avatar.present? %>
-        <%= cl_image_tag(current_user.photo, height: 40, width: 40, crop: :fill, alt: "user avatar",  class: "img-circle")%>
-      <% else %>
-        <%= image_tag "user.png", alt: "user avatar", height: 40, class: "img-circle"%>
-      <% end %>
-      <p><%= @owner_name %></p>
-    </div>
-    <div class="cat-card-show">
-      <div class="cat-image"><%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill) %></div>
+<div class="container">
+  <div class="row">
+    <div class="show-cat">
+      <div class="cats-infos">
+        <div class="owner-infos">
+          <% if @owner_avatar.present? %>
+            <%= cl_image_tag(current_user.photo, height: 40, width: 40, crop: :fill, alt: "user avatar",  class: "img-circle")%>
+          <% else %>
+            <%= image_tag "user.png", alt: "user avatar", height: 40, class: "img-circle"%>
+          <% end %>
+          <p><%= @owner_name %></p>
+        </div>
+        <div class="cat-card-show">
+          <div class="cat-image"><%= cl_image_tag(@cat.photo, height: 300, width: 400, crop: :fill) %></div>
 
-      <h1 class="cat-name"><%= @cat.name %></h1>
+          <h1 class="cat-name"><%= @cat.name %></h1>
+        </div>
+        <p> 🐈  <strong><%= @cat.breed %></strong>  </p>
+        <p>About - <%= @cat.description %></p>
+        <p><strong><%= @cat.price_per_day %>€</strong>/day  </p>
+      </div>
+      <div class="booking-new">
+        <h2>Your new booking</h2>
+        <h3><%= @cat.name %></h3>
+          <%= simple_form_for [@cat, @booking] do |f| %>
+            <%= f.input :begin_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :message%>
+            <%= f.submit 'Book', class: 'btn btn-primary book-btn' %>
+          <% end %>
+      </div>
     </div>
-    <p> 🐈  <strong><%= @cat.breed %></strong>  </p>
-    <p>About - <%= @cat.description %></p>
-    <p><strong><%= @cat.price_per_day %>€</strong>/day  </p>
-
+  </div>
+  <div class="row">
+    <h2>Cat's reviews</h2>
+    <% @reviews.each do |review| %>
+      <%= review.description  %>
+      <%= '💗'* review.rating %>
+    <% end %>
     <hr>
     <%= link_to 'Return to all cats', cats_path %>
-    </div>
-
-
-
-  <div class="booking-new">
-    <h1>Your new booking</h1>
-    <h2><%= @cat.name %></h2>
-    <%= simple_form_for [@cat, @booking] do |f| %>
-      <%= f.input :begin_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :message%>
-      <%= f.submit 'Book', class: 'btn btn-primary book-btn' %>
-    <% end %>
   </div>
 </div>
