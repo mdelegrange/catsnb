@@ -1,3 +1,6 @@
+require 'json'
+require 'open-uri'
+
 class Owner::CatsController < ApplicationController
   before_action :set_cat, only: [ :edit, :update, :destroy ]
 
@@ -7,6 +10,9 @@ class Owner::CatsController < ApplicationController
 
   def new
     @cat = Cat.new
+    url = 'https://raw.githubusercontent.com/jfairbank/programming-elm.com/master/cat-breeds.json'
+    breed_serialized = open(url).read
+    @breed = JSON.parse(breed_serialized)
   end
 
   def create
