@@ -10,8 +10,11 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
 
     if @review.save
+      flash[:notice] = "Review successfully added"
       redirect_to bookings_path
     else
+      flash[:alert] = "Please fill correctly
+ the required fields!"
       render :new
     end
   end
@@ -24,8 +27,11 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      flash[:notice] = "review successfully uptaded"
       redirect_to bookings_path
     else
+      flash[:alert] = "Please fill correctly
+ the required fields!"
       render :edit
     end
   end
