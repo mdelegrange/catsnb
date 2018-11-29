@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
 
+puts "Cleaning reviews..."
+Review.destroy_all
 puts "Cleaning bookings..."
 Booking.destroy_all
 puts "Cleaning cats..."
@@ -21,6 +23,17 @@ yassine      = User.create!(email:'yassine@lewagon.com', password: 'password', f
 user_renter1 = User.create!(email:'renter1@renter.fr', password: 'password', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
 user_renter2 = User.create!(email:'renter2@renter.fr', password: 'password', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
 user_renter3 = User.create!(email:'renter3@renter.fr', password: 'password', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name )
+
+
+10.times do
+  user = User.new(
+    email:      Faker::Internet.email,
+    password:   'password',
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
+    )
+  user.save!
+end
 
 puts "Users Created"
 
@@ -45,6 +58,31 @@ booking5 = Booking.create!(user: user_renter3, cat: cat10, begin_date: '2019-01-
 booking6 = Booking.create!(user: user_renter3, cat: cat9, begin_date: '2019-03-20', end_date: '2019-05-20', total_price: 1159, status: 'pending')
 booking7 = Booking.create!(user: matthieu,     cat: cat8, begin_date: '2019-03-20', end_date: '2019-05-20', total_price: 1220, status: 'pending')
 
+30.times do
+  booking = Booking.new(
+    user: User.all.sample,
+    cat: Cat.all.sample,
+    begin_date: '2018-11-20',
+    end_date: '2018-11-22',
+    total_price: 60,
+    status: ['accepted', 'denied'].sample
+    )
+  booking.save!
+end
+
 puts "Bookings Created"
+
+booking_ids = Booking.where(status: 'accepted').ids
+
+booking_ids.each do |booking_id|
+  review = Review.new(
+    description:Faker::FamousLastWords.last_words,
+    rating:[0, 1, 2, 3, 4, 5].sample,
+    booking_id: booking_id
+    )
+  review.save!
+end
+
+puts "Reviews Created"
 
 puts "Finished"
