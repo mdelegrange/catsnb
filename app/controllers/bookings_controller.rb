@@ -10,8 +10,9 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = Booking.new(booking_params)
     if @cat.user == current_user
-      flash[:alert] = "Unable to book cat."
+      flash[:alert] = "You can't book your cat!"
       render 'cats/show'
     else
       @booking = Booking.new(booking_params)
