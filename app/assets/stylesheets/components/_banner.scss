@@ -1,6 +1,5 @@
 .banner {
   color: #f6c7c7;
-  text-align: center;
   height: calc(100vh);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
@@ -21,10 +20,12 @@
   margin-bottom: 30px;
 }
 
-.input-form {
-  width: 600px;
-  border : 1px solid pink;
-  border-radius: 4px;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  }
+.btn-home {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-padding {
+  padding: 10px 50px;
+}
