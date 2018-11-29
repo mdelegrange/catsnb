@@ -1,5 +1,9 @@
+require 'json'
+require 'open-uri'
+
 class Owner::CatsController < ApplicationController
   before_action :set_cat, only: [ :edit, :update, :destroy ]
+  before_action :load_cat_breeds, only: [:new, :edit]
 
   def index
     @cats = current_user.cats
@@ -47,4 +51,7 @@ class Owner::CatsController < ApplicationController
     params.require(:cat).permit(:name, :breed, :description, :birth_date, :photo, :price_per_day, :address)
   end
 
+  def load_cat_breeds
+    @breeds = Cat::BREEDS
+  end
 end

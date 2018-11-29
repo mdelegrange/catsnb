@@ -3,7 +3,7 @@
     <h2>Edit <%= @cat.name %></h2>
    <%= simple_form_for([:owner, @cat]) do |f| %>
     <%= f.input :name, label: false, placeholder: 'Name' %>
-    <%= f.input :breed, label: false, placeholder: 'Breed' %>
+    <%= f.input :breed, collection: @breeds %>
     <%= f.input :description, label: false, placeholder: 'Description' %>
     <%= f.input :birth_date, as: :string, required: false, input_html: {class: "datepicker-birth"}, label: false, placeholder: 'Birth date' %>
     <%= f.input :address, label: false, placeholder: 'Address' %>
