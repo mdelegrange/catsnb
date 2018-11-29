@@ -49,9 +49,9 @@ class CatsController < ApplicationController
       return @average = 0
     else
       @cat = Cat.find(params[:id])
-      @average = 0
-      @cat.reviews.each {|review| @average += review.rating }
-      return @average / @cat.reviews.count
+      total = 0
+      @cat.reviews.each {|review| total += review.rating }
+      return @average = total / @cat.reviews.count
     end
   end
 end
