@@ -13,7 +13,7 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <% if user_signed_in? %>
-      <%= link_to 'Add a cat', new_owner_cat_path, class: "btn btn-primary share"  %>
+      <%= link_to 'Add a cat', new_owner_cat_path, class: "btn btn-navbar"  %>
       <div class="navbar-wagon-item">
       <div class="dropdown">
           <% if current_user.photo.present? %>
