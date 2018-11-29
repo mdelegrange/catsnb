@@ -30,6 +30,7 @@
             <p>status: <span> <%= booking.status %></span></p>
           </div>
           <p>Price: <span> <%= booking.total_price %> euro</span></p>
+          <%= link_to 'booking', new_booking_review_path(booking)  %>
         </div>
       </div>
     <% end %>
