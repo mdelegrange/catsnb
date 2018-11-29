@@ -28,8 +28,7 @@ class BookingsController < ApplicationController
         flash[:notice] = "Booking successfully added"
         redirect_to bookings_path
       else
-        flash[:alert] = "Please fill correctly
- the required fields!"
+        flash[:alert] = "Please fill correctly the required fields!"
         render 'cats/show'
       end
     end

@@ -22,8 +22,7 @@ class Owner::CatsController < ApplicationController
       flash[:notice] = "Cat successfully added"
       redirect_to root_path
     else
-      flash[:alert] = "Please fill correctly
- the required fields!"
+      flash[:alert] = "Please fill correctly the required fields!"
       render :new
     end
   end
@@ -36,8 +35,7 @@ class Owner::CatsController < ApplicationController
       flash[:notice] = "Cat successfully updated"
       redirect_to owner_cats_path
     else
-      flash[:alert] = "Please fill correctly
-      the required fields!"
+      flash[:alert] = "Please fill correctly the required fields!"
       render :edit
     end
   end

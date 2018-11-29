@@ -13,8 +13,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review successfully added"
       redirect_to bookings_path
     else
-      flash[:alert] = "Please fill correctly
- the required fields!"
+      flash[:alert] = "Please fill correctly the required fields!"
       render :new
     end
   end
@@ -30,8 +29,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "review successfully uptaded"
       redirect_to bookings_path
     else
-      flash[:alert] = "Please fill correctly
- the required fields!"
+      flash[:alert] = "Please fill correctly the required fields!"
       render :edit
     end
   end

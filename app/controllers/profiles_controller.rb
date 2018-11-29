@@ -13,8 +13,7 @@ class ProfilesController < ApplicationController
       flash[:notice] = "Profil successfully uptaded"
       redirect_to profile_path
     else
-      flash[:alert] = "Please fill correctly
- the required fields!"
+      flash[:alert] = "Please fill correctly the required fields!"
       render :edit
     end
   end
