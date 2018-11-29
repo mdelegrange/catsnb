@@ -33,7 +33,7 @@
           <% if booking.end_date.past? %>
             <% if booking.review %>
               <%= link_to 'Edit review', edit_booking_review_path(booking, booking.review), class: 'btn btn-navbar btn-mini'  %>
-              <%= link_to 'Delete review', new_booking_review_path(booking), class: 'btn btn-navbar btn-mini'  %>
+              <%= link_to 'Delete review', booking_review_path(booking, booking.review), method: :delete, class: 'btn btn-navbar btn-mini'  %>
             <% else %>
               <%= link_to 'Add a review', new_booking_review_path(booking), class: 'btn btn-navbar btn-mini' %>
             <% end %>
