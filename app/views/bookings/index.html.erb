@@ -29,8 +29,15 @@
           <div class="<%= booking.status %>">
             <p>status: <span> <%= booking.status %></span></p>
           </div>
-          <p>Price: <span> <%= booking.total_price %> euro</span></p>
-          <%= link_to 'add a review', new_booking_review_path(booking) if booking.end_date.past?  %>
+          <p>Total paid: <span> <%= booking.total_price %> €</span></p>
+          <% if booking.end_date.past? %>
+            <% if booking.review %>
+              <%= link_to 'Edit review', edit_booking_review_path(booking, booking.review), class: 'btn btn-navbar btn-mini'  %>
+              <%= link_to 'Delete review', new_booking_review_path(booking), class: 'btn btn-navbar btn-mini'  %>
+            <% else %>
+              <%= link_to 'Add a review', new_booking_review_path(booking), class: 'btn btn-navbar btn-mini' %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>
