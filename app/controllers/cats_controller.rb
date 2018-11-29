@@ -3,9 +3,9 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show]
 
   def index
-    if params[:query].present?
+    if params[:address].present?
       @cats_loc = Cat.where.not(latitude: nil, longitude: nil)
-      @cats = @cats_loc.near(params[:query], 10)
+      @cats = @cats_loc.near(params[:address], 10)
       @markers = @cats.map do |cat|
       {
         lat: cat.latitude,

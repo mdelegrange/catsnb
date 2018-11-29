@@ -3,10 +3,11 @@
   <%= simple_form_for(@user, url: profile_path) do |f| %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :address %>
+    <%= f.input :address, input_html: { id: 'address' } %>
     <%= f.input :phone %>
     <%= f.input :email %>
-    <%= f.input :sex %>
+    <%= f.input :sex, as: :radio_buttons, collection: ['M','F'], 
+    wrapper: :vertical_collection_inline %>
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.button :submit, class: 'btn btn-primary' %>
