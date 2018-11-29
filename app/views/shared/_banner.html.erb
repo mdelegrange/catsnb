@@ -1,14 +1,16 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://images.pexels.com/photos/794083/pexels-photo-794083.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');">
   <div class="banner-content">
     <h2>Find and rent some lovely kitty cats</h2>
-    <div class="cta"></div>
+    <br>
       <%= form_tag cats_path, method: :get do %>
-        <%= text_field_tag :address, 
-          params[:address], 
+        <%= text_field_tag :address,
+          params[:address],
           class: "form-control",
           placeholder: "Find a cat"
         %>
-        <%= submit_tag "Meow !", :class => "btn btn-primary btn-lg" %>
+        <div class="btn-home">
+          <%= submit_tag "Meow !", :class => "btn btn-primary btn-lg btn-padding" %>
+        </div>
       <% end %>
     </div>
   </div>
