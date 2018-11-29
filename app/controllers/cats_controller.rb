@@ -1,6 +1,7 @@
 class CatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   before_action :set_cat, only: [:show]
+  before_action :set_average_rating, only: [:show]
 
   def index
     if params[:address].present?
@@ -41,5 +42,16 @@ class CatsController < ApplicationController
 
   def set_cat
     @cat = Cat.find(params[:id])
+  end
+
+  def set_average_rating
+    if @cat.reviews.count.zero?
+      return @average = 0
+    else
+      @cat = Cat.find(params[:id])
+      @average = 0
+      @cat.reviews.each {|review| @average += review.rating }
+      return @average / @cat.reviews.count
+    end
   end
 end

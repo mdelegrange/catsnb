@@ -32,11 +32,24 @@
     </div>
   </div>
   <div class="row">
-    <h2>Cat's reviews</h2>
-    <% @reviews.each do |review| %>
-      <%= review.description  %>
-      <%= '💗'* review.rating %>
+    <h2>Cat's reviews
+        <%= ('💝'* @average + '♡'*(5-@average)) unless @reviews.count.zero? %>
+    </h2>
+    <% if @reviews.count.zero? %>
+      <p>No reviews yet</p>
+    <% else %>
+    <div >
+
+    <ul class="list-group ">
+      <% @reviews.each do |review| %>
+      <li class="list-group-item">
+        <p>"<%= review.description  %>", <em><%= review.booking.user.first_name %></em></p>
+        <p><%= '💗'* review.rating %></p>
+      </li>
+      <% end %>
+    </div>
     <% end %>
+    </ul>
     <hr>
     <%= link_to 'Return to all cats', cats_path %>
   </div>
