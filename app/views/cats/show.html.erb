@@ -4,10 +4,9 @@
       <div class="cats-infos">
         <div class="owner-infos">
           <% if @owner_avatar.present? %>
-            <%= image_tag "user.png", alt: "user avatar", height: 40, class: "img-circle"%>
             <%= cl_image_tag(current_user.photo, height: 40, width: 40, crop: :fill, alt: "user avatar",  class: "img-circle")%>
           <% else %>
-            <%= cl_image_tag(current_user.photo, height: 40, width: 40, crop: :fill, alt: "user avatar",  class: "img-circle")%>
+            <%= image_tag "user.png", alt: "user avatar", height: 40, class: "img-circle"%>
           <% end %>
           <p><%= @owner_name %></p>
         </div>
