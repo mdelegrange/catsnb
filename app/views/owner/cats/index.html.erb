@@ -19,7 +19,9 @@
       <div class="message">
         <%= cl_image_tag(cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
         <div class="message-name">
+          <%= link_to cat_path(cat) do  %>
           <h3><%= cat.name %></h3>
+          <% end %>
         </div>
         <div class="message-body">
           <p>Breed: <%= cat.breed %></p>
@@ -27,10 +29,8 @@
           <p>Price per day: <%= cat.price_per_day %> €</p>
         </div>
         <div class="message-status">
-          <ul style="list-style-type: none;" class="text-center">
-            <li><%= link_to '✏️edit', edit_owner_cat_path(cat)  %></li>
-            <li><%= link_to '❌delete', owner_cat_path(cat), method: :delete, data: { confirm: "Are you sure?" } %></li>
-          </ul>
+            <%= link_to '✏️Edit cat info', edit_owner_cat_path(cat), class: 'btn btn-navbar btn-mini'  %>
+            <%= link_to '❌Delete cat', owner_cat_path(cat), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-navbar btn-mini'%>
         </div>
       </div>
       <% end %>

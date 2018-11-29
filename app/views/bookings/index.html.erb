@@ -17,9 +17,11 @@
     </div>
     <% @bookings.each do |booking| %>
       <div class="message">
-        <%= cl_image_tag(booking.cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
+          <%= cl_image_tag(booking.cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
         <div class="message-name">
-          <h3><%= booking.cat.name %></h3>
+          <%= link_to cat_path(booking.cat) do  %>
+            <h3><%= booking.cat.name %></h3>
+          <% end %>
         </div>
         <div class="message-body">
           <p>From: <%= booking.begin_date %> to: <%= booking.end_date %></p>
@@ -32,10 +34,10 @@
           <p>Total paid: <span> <%= booking.total_price %> €</span></p>
           <% if booking.end_date.past? %>
             <% if booking.review %>
-              <%= link_to 'Edit review', edit_booking_review_path(booking, booking.review), class: 'btn btn-navbar btn-mini'  %>
-              <%= link_to 'Delete review', booking_review_path(booking, booking.review), method: :delete, class: 'btn btn-navbar btn-mini'  %>
+              <%= link_to '✏️Edit review', edit_booking_review_path(booking, booking.review), class: 'btn btn-navbar btn-mini'  %>
+              <%= link_to '❌Delete review', booking_review_path(booking, booking.review), method: :delete, class: 'btn btn-navbar btn-mini'  %>
             <% else %>
-              <%= link_to 'Add a review', new_booking_review_path(booking), class: 'btn btn-navbar btn-mini' %>
+              <%= link_to '✚ Add a review', new_booking_review_path(booking), class: 'btn btn-navbar btn-mini' %>
             <% end %>
           <% end %>
         </div>
