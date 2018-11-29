@@ -19,7 +19,9 @@
       <div class="message">
         <%= cl_image_tag(booking.cat.photo, width: 70, height: 70, crop: :fill, class: "img-circle")%>
         <div class="message-name">
+          <%= link_to cat_path(booking.cat) do  %>
           <h3><%= booking.cat.name %></h3>
+          <% end %>
         </div>
         <div class="message-body">
           <p>From: <%= booking.begin_date %> to: <%= booking.end_date %></p>
