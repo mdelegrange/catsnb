@@ -2,7 +2,7 @@
   <h2>Add a cat</h2>
   <%= simple_form_for([:owner, @cat]) do |f| %>
   <%= f.input :name %>
-  <%= f.input :breed, collection: @breed %>
+  <%= f.input :breed, collection: @breeds %>
   <%# f.collection_select :breed, Cat.order(:breed),:id,:breed, include_blank: true %>
   <%= f.input :description %>
   <%= f.input :birth_date, as: :string, required: false, input_html: {class: "datepicker"} %>
