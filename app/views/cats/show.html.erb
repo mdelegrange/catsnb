@@ -1,3 +1,7 @@
+<%if flash[:alert] %>
+  <h1> no </h1>
+<% end %>
+
 <div class="container show-cat">
   <div class="cats-infos">
     <div class="owner-infos">
@@ -20,8 +24,6 @@
     <hr>
     <%= link_to 'Return to all cats', cats_path %>
     </div>
-
-
 
   <div class="booking-new">
     <h1>Your new booking</h1>
