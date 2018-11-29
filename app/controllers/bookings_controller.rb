@@ -6,24 +6,29 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new
+      @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
-
-    @booking.cat = @cat
-    @booking.status = "pending"
-    @booking.user = current_user
-    if @booking.end_date.present? && @booking.begin_date.present?
-      @booking.total_price = @cat.price_per_day * (@booking.end_date - @booking.begin_date)
-    end
-
-    if @booking.save
-
-      redirect_to bookings_path
-    else
+    if @cat.user == current_user
+      flash[:alert] = "You can't book your cat!"
       render 'cats/show'
+    else
+      @booking = Booking.new(booking_params)
+
+      @booking.cat = @cat
+      @booking.status = "pending"
+      @booking.user = current_user
+      if @booking.end_date.present? && @booking.begin_date.present?
+        @booking.total_price = @cat.price_per_day * (@booking.end_date - @booking.begin_date)
+      end
+
+      if @booking.save
+        redirect_to bookings_path
+      else
+        render 'cats/show'
+      end
     end
   end
 
