@@ -43,7 +43,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
 
 }
 
-const addressInput = document.getElementById('query');
+const addressInput = document.getElementById('address');
 
 if (addressInput) {
   const places = require('places.js');
