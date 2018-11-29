@@ -16,18 +16,40 @@
       <%= link_to 'Add a cat', new_owner_cat_path, class: "btn btn-primary share"  %>
       <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% if current_user.photo.present? %>
-          <%= cl_image_tag(current_user.photo, height: 35, width: 35, crop: :fill, alt: "user avatar",  class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle' => "dropdown" )%>
-        <% else %>
-          <%= image_tag "user.png", alt: "user avatar", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle' => "dropdown" %>
-          <!-- <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
-        <% end %>
+          <% if current_user.photo.present? %>
+            <%= cl_image_tag(current_user.photo, height: 35, width: 35, crop: :fill, alt: "user avatar",  class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle' => "dropdown" )%>
+            <span class="badge">3</span>
+          <% else %>
+            <%= image_tag "user.png", alt: "user avatar", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle' => "dropdown" %>
+            <span class="badge"><%= @pending_bookings_count unless @pending_bookings_count.zero? %></span>
+          <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><%= link_to 'My cats', owner_cats_path %></li>
-          <li><%= link_to 'owner/bookings', owner_bookings_path %></li>
-          <li><%= link_to 'renter/bookings', bookings_path %></li>
-          <li><%= link_to 'My profile', profile_path %></li>
-          <li><%= link_to 'Sign out',  destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link"  %></li>
+          <li>
+            <%= link_to owner_cats_path do%>
+              <i class="fas fa-paw"></i> My cats
+            <% end %>
+          </li>
+          <li>
+            <%= link_to owner_bookings_path do%>
+              <i class="fas fa-arrow-left"></i> My bookings
+              (<%= @pending_bookings_count %>)
+            <% end %>
+          </li>
+          <li>
+            <%= link_to bookings_path do%>
+              <i class="fas fa-arrow-right"></i> My rentals
+            <% end %>
+          </li>
+          <li>
+            <%= link_to profile_path do%>
+              <i class="fas fa-user"></i> My profile
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" do %>
+              <i class="fas fa-sign-out-alt"></i> Sign out
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

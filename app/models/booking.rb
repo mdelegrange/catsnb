@@ -7,6 +7,8 @@ class Booking < ApplicationRecord
   validates :end_date, presence: true
   validate :end_after_start
 
+  scope :pending, -> { where(status: "pending") }
+
   private
 
   def end_after_start

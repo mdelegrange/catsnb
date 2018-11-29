@@ -18,11 +18,12 @@ class BookingsController < ApplicationController
     if @booking.end_date.present? && @booking.begin_date.present?
       @booking.total_price = @cat.price_per_day * (@booking.end_date - @booking.begin_date)
     end
+
     if @booking.save
 
-      redirect_to root_path
+      redirect_to bookings_path
     else
-      render :new
+      render 'cats/show'
     end
   end
 
