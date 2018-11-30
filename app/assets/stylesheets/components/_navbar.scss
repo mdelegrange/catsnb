@@ -93,3 +93,28 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: #ff467e;
+  color: white;
+}
+
+.btn-navbar {
+  border : 1px solid #ff467e;
+}
+
+.btn-navbar:hover {
+  border : 1px solid #fd94b4;
+  color: #fd94b4;
+}
+
+.btn-mini {
+  font-size: 12px;
+}
+
+

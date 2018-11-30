@@ -1,3 +1,4 @@
 import "bootstrap";
-import "../plugins/flatpickr";
 import "./cards";
+import "../plugins/flatpickr.js";
+import "./map.js"

@@ -16,8 +16,8 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     const el = document.createElement('div');
     el.className = 'marker';
     el.style.backgroundImage = 'url(https://image.flaticon.com/icons/svg/763/763699.svg)';
-    el.style.width = '40px';
-    el.style.height = '40px';
+    el.style.width = '45px';
+    el.style.height = '45px';
 
     new mapboxgl.Marker(el)
       .setLngLat([marker.lng, marker.lat])
@@ -41,4 +41,13 @@ if (mapElement) { // only build a map if there's a div#map to inject into
 
 
 
+}
+
+const addressInput = document.getElementById('address');
+
+if (addressInput) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInput
+  });
 }

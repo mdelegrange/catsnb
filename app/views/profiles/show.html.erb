@@ -1,17 +1,53 @@
 <div class="container">
-  <% if current_user.photo.present? %>
-    <%= cl_image_tag(current_user.photo, height: 300, width: 300, crop: :fill, alt: "user avatar",  class: "img-circle")%>
-  <% else %>
-    <%= image_tag "user.png", alt: "user avatar", height: 300, class: "img-circle"%>
-  <% end %>
+  <div class="row">
+    <h1>Bonjour <%= current_user.first_name %></h1>
+    <div class="tabs">
+      <%= link_to owner_cats_path, class: "tab" do  %>
+        <h2>My cats</h2>
+      <% end %>
+      <%= link_to owner_bookings_path, class: "tab" do  %>
+        <h2>My bookings</h2>
+      <% end %>
+      <%= link_to bookings_path, class: "tab" do  %>
+        <h2>My rented cats</h2>
+      <% end %>
+      <%= link_to profile_path, class: "tab active" do  %>
+        <h2>My profile</h2>
+      <% end %>
+    </div>
+        <%= simple_form_for(@user, url: profile_path) do |f| %>
+    <div class="profile-card text-center">
 
-  <h1><%= @user.first_name %><%= @user.last_name %></h1>
-  <p>Address: <%= @user.address %></p>
-  <p>Email: <%= @user.email %></p>
-  <p>Phone: <%= @user.phone %></p>
-  <p>Gender: <%= @user.sex %></p>
-  <p>Birth Date: <%= @user.birth_date %></p>
-
-  <%= link_to 'Edit', edit_profile_path %>
-
+        <div class="user-pic">
+          <% if current_user.photo.present? %>
+            <%= cl_image_tag(current_user.photo, height: 150, width: 150, crop: :fill, alt: "user avatar",  class: "img-circle avatar-shadow")%>
+          <% else %>
+            <%= image_tag "user.png", alt: "user avatar", height: 150, class: "img-circle"%>
+          <% end %>
+          <div class="edit-photo">
+            <label for="user_photo" class="add-photo">
+              <%= image_tag "edit.png",height: 25, width: 25, crop: :fill, alt: "profile_photo"%>
+              <%= f.input :photo, label: false, input_html: { class: "hidden" } %>
+            </label>
+          </div>
+        </div>
+        <div class="text-info">
+        <h1 class="user-name-profile"><%= @user.first_name %><%= @user.last_name %></h1>
+      <div class="profile-infos">
+    <%= f.input :first_name, label: false, placeholder: 'First name' %>
+    <%= f.input :last_name, label: false, placeholder: 'Last name' %>
+    <%= f.input :address, input_html: { id: 'address' }, label: false, placeholder: 'Address' %>
+    <%= f.input :phone, label: false, placeholder: 'Phone' %>
+    <%= f.input :email, label: false, placeholder: 'Email' %>
+  <hr></hr>
 </div>
+    <%= submit_tag 'Save', class: 'btn btn-primary btn-save' %>
+  <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

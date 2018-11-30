@@ -3,7 +3,7 @@ require 'open-uri'
 
 class Owner::CatsController < ApplicationController
   before_action :set_cat, only: [ :edit, :update, :destroy ]
-  before_action :load_cat_breeds, only: [:new, :edit]
+  before_action :load_cat_breeds, only: [:new, :edit, :create]
 
   def index
     @cats = current_user.cats
@@ -19,8 +19,10 @@ class Owner::CatsController < ApplicationController
     @cat.user = @user
 
     if @cat.save
+      flash[:notice] = "Cat successfully added"
       redirect_to root_path
     else
+      flash[:alert] = "Please fill correctly the required fields!"
       render :new
     end
   end
@@ -30,8 +32,10 @@ class Owner::CatsController < ApplicationController
 
   def update
     if @cat.update(cat_params)
+      flash[:notice] = "Cat successfully updated"
       redirect_to owner_cats_path
     else
+      flash[:alert] = "Please fill correctly the required fields!"
       render :edit
     end
   end
