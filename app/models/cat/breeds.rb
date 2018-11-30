@@ -1,6 +1,5 @@
 class Cat
   BREEDS = [
-    "---> Select the breed <---",
     "Abyssinian",
     "Aegean",
     "American Curl",
