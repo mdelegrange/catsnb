@@ -96,6 +96,7 @@ class Cat
     "Toyger",
     "Turkish Angora",
     "Turkish Van",
+    "Unknown",
     "Ukrainian Levkoy"
   ]
 end
