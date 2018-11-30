@@ -3,7 +3,7 @@
     <h2>Edit <%= @cat.name %></h2>
    <%= simple_form_for([:owner, @cat]) do |f| %>
     <%= f.input :name, label: false, placeholder: 'Name' %>
-    <%= f.input :breed, collection: @breeds %>
+    <%= f.input :breed, collection: @breeds, label: false %>
     <%= f.input :description, label: false, placeholder: 'Description' %>
     <%= f.input :birth_date, as: :string, required: false, input_html: {class: "datepicker-birth"}, label: false, placeholder: 'Birth date' %>
     <%= f.input :address, label: false, placeholder: 'Address' %>
@@ -13,12 +13,10 @@
     </div>
 
     <div class="complex-input">
-      <label for="cat_photo" class="add-photo">
-        <%= image_tag "picture.png",height: 35, width: 35, crop: :fill, alt: "picture-cat"%>
-        <p class="add_photo_text">Add picture</p>
-    <%= f.input :photo, label: false, input_html: { class: "hidden" } %>
-      </label>
+      <%= f.input :photo, label: (image_tag "picture.png", height: 35, width: 35, crop: :fill, alt: "picture-cat") %>
+      <%= f.input :photo_cache, as: :hidden %>
     </div>
+    <hr></hr>
     <div class="cta text-center">
     <%= f.button :submit, class: 'btn btn-primary' %>
     </div>
