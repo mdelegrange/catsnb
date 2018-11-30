@@ -20,7 +20,7 @@ class Owner::CatsController < ApplicationController
 
     if @cat.save
       flash[:notice] = "Cat successfully added"
-      redirect_to root_path
+      redirect_to owner_cats_path
     else
       flash[:alert] = "Please fill correctly the required fields!"
       render :new

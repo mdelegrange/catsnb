@@ -7,7 +7,7 @@
     <%= f.input :breed, collection: @breeds, label: false, prompt: 'Select Breed'  %>
     <%= f.input :description, label: false, placeholder: 'Description' %>
     <%= f.input :birth_date, as: :string, required: false, input_html: {class: "datepicker-birth"}, label: false, placeholder: 'Birth date' %>
-    <%= f.input :address, label: false, placeholder: 'Address' %>
+    <%= f.input :address, input_html: { id: 'address' }, label: false, placeholder: 'Address'%>
     <div class="complex-input">
       <%= f.input :price_per_day, label: false, placeholder: 'Price per day' %>
       <p class="euro">€</p>
