@@ -3,7 +3,7 @@ require 'open-uri'
 
 class Owner::CatsController < ApplicationController
   before_action :set_cat, only: [ :edit, :update, :destroy ]
-  before_action :load_cat_breeds, only: [:new, :edit]
+  before_action :load_cat_breeds, only: [:new, :edit, :create]
 
   def index
     @cats = current_user.cats
